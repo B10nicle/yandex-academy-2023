@@ -39,6 +39,12 @@ jobs:
       - name: Run Postman tests
         run: >
           newman run ./postman/Yandex_Lavka.postman_collection.json
+          --delay-request 50 -r cli,htmlextra 
+          --verbose --color on --reporter-htmlextra-darkTheme 
+          --reporter-htmlextra-export reports/ewm_main_report.html
+          --reporter-htmlextra-title "Report"
+          --reporter-htmlextra-logs true
+          --reporter-htmlextra-template ./tests/.github/workflows/dashboard-template.hbs
 
       - name: Compose down
         run: |
