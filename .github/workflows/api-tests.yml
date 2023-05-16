@@ -35,8 +35,8 @@ jobs:
       - name: Run application
         run:
           docker-compose up -d
-          .github/workflows/wait-for-it.sh -t 60 localhost:8080
-          .github/workflows/wait-for-it.sh -t 60 localhost:5432
+          bash .github/workflows/wait-for-it.sh -t 60 localhost:8080
+          bash .github/workflows/wait-for-it.sh -t 60 localhost:5432
 
       - name: Run Postman tests
         run: >
