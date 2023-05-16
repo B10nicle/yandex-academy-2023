@@ -1,0 +1,43 @@
+name: API Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Check and build application
+        run: docker compose build
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run application
+        run: |
+          docker compose up -d
+          sleep 20
+
+      - name: Run Postman tests
+        run: |
+          newman run ./postman/Yandex_Lavka.postman_collection.json \
+          --delay-request 50 -r cli,htmlextra \
+          --verbose --color on --reporter-htmlextra-darkTheme \
+          --reporter-htmlextra-export reports/ewm_main_report.html \
+          --reporter-htmlextra-title "Report results" \
+          --reporter-htmlextra-logs true \
+
+      - name: Compose down
+        run: docker-compose down
