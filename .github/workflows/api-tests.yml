@@ -33,8 +33,6 @@ jobs:
       - name: Run application
         run: |
           docker-compose up -d
-          chmod +x .github/workflows/wait-for-it.sh
-          bash .github/workflows/wait-for-it.sh -t 60 localhost:5432
 
       - name: Print application logs
         run: docker-compose logs application
