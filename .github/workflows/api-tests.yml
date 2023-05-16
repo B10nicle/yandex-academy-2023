@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Run chmod to make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
