@@ -23,7 +23,7 @@ jobs:
           docker-compose build
 
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '18.16.0'
 
