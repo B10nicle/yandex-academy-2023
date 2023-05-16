@@ -2596,7 +2596,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "https://127.0.0.1:8080",
+			"value": "127.0.0.1:8080",
 			"type": "string"
 		}
 	]
