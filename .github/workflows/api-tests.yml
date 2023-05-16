@@ -11,15 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run chmod to make gradlew executable
-        run: chmod +x ./gradlew
-
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
+          
+      - name: Run chmod to make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: Check and Build application
         run:
