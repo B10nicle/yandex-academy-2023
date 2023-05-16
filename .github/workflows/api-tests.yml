@@ -18,6 +18,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Install helper script
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y wget &&
+          wget --no-check-certificate -P /tmp/ https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh &&
+          chmod a+x /tmp/wait-for-it.sh
+
       - name: Check and build application
         run:
           docker-compose build
@@ -25,7 +30,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install Newman
         run: npm install -g newman newman-reporter-htmlextra
@@ -34,18 +39,19 @@ jobs:
         run: |
           docker-compose up -d
 
-      - name: Print application logs
-        run: docker-compose logs application
+      - name: Waiting for application is up
+        run: |
+          /tmp/wait-for-it.sh -t 60 localhost:8080
+          echo "Application is up"
 
       - name: Run Postman tests
         run: |
-          newman run ./postman/Yandex_Lavka.postman_collection.json \ --timeout-request 5000
+          newman run ./postman/Yandex_Lavka.postman_collection.json \
           --delay-request 50 -r cli,htmlextra \
           --verbose --color on --reporter-htmlextra-darkTheme \
           --reporter-htmlextra-export reports/ewm_main_report.html \
-          --reporter-htmlextra-title "Report" \
+          --reporter-htmlextra-title "Report results" \
           --reporter-htmlextra-logs true \
-          --reporter-htmlextra-template ./tests/.github/workflows/dashboard-template.hbs
 
       - name: Compose down
         run: docker-compose down
