@@ -19,3 +19,5 @@ WORKDIR $APP_HOME
 COPY --from=BUILD /opt/app/build/libs/$JAR_NAME $APP_HOME
 EXPOSE 8080
 ENTRYPOINT exec java -jar $JAR_NAME
+
+RUN chmod +x wait-for-it.sh
