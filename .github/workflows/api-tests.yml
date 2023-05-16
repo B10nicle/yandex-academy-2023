@@ -18,7 +18,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Check and Build application
+      - name: Check and build application
         run:
           docker-compose build
 
@@ -35,8 +35,6 @@ jobs:
       - name: Run application
         run:
           docker-compose up -d
-          docker-compose ps
-          docker-compose logs
 
       - name: Run POSTMAN tests
         run: >
