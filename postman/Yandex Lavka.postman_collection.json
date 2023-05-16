@@ -1,0 +1,2603 @@
+{
+	"info": {
+		"_postman_id": "d6561342-a7c3-4787-a05f-7a3beb07574c",
+		"name": "Yandex Lavka",
+		"description": "Tests for Yandex Lavka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22427952"
+	},
+	"item": [
+		{
+			"name": "couriers",
+			"item": [
+				{
+					"name": "save",
+					"item": [
+						{
+							"name": "Couriers save throws 400 Bad Request (CreateCourierRequest is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (CreateCourierRequest couriers is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (CreateCourierRequest couriers is empty)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (courier type field is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"regions\": [\n                1,\n                2,\n                3\n            ],\n            \"working_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (regions field is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"courier_type\": \"FOOT\",\n            \"working_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (working hours field is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                1,\n                2,\n                3\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (unsupported courier type)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"courier_type\": \"AVIA\",\n            \"regions\": [\n                1,\n                2,\n                3\n            ],\n            \"working_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (wrong format in regions)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                \"a\",\n                2,\n                3\n            ],\n            \"working_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save throws 400 Bad Request (wrong format in working hours)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                1,\n                2,\n                3\n            ],\n            \"working_hours\": [\n                \"hello\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers save",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"const req = JSON.parse(pm.request.body.raw);",
+											"const res = pm.response.json();",
+											"let id = 0;",
+											"let courierId = 0;",
+											"",
+											"pm.test(\"Size of request and response should be the same\", function () {",
+											"    pm.expect(res.couriers.length).to.equal(req.couriers.length);",
+											"});",
+											"",
+											"pm.test(\"Every courier should have following fields: courier_id, courier_type, regions, working_hours\", function () {",
+											"    res.couriers.forEach(function(courier) {",
+											"        pm.expect(courier).to.have.property(\"courier_id\", ++id);",
+											"        pm.expect(courier).to.have.property(\"courier_type\", req.couriers[courierId].courier_type);",
+											"        pm.expect(courier.regions.length).to.equal(req.couriers[courierId].regions.length);",
+											"        pm.expect(courier.working_hours.length).to.equal(req.couriers[courierId++].working_hours.length);",
+											"    })",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"couriers\": [\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                1,\n                2,\n                3\n            ],\n            \"working_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                77,\n                4,\n                1,\n                78\n            ],\n            \"working_hours\": [\n                \"15:00-16:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                77,\n                5\n            ],\n            \"working_hours\": [\n                \"09:00-13:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                3,\n                8\n            ],\n            \"working_hours\": [\n                \"10:00-12:00\",\n                \"16:00-17:00\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                6\n            ],\n            \"working_hours\": [\n                \"15:00-15:30\",\n                \"21:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"FOOT\",\n            \"regions\": [\n                42,\n                43\n            ],\n            \"working_hours\": [\n                \"17:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"BIKE\",\n            \"regions\": [\n                8,\n                11,\n                17\n            ],\n            \"working_hours\": [\n                \"13:00-19:30\",\n                \"22:00-23:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                5,\n                23,\n                29\n            ],\n            \"working_hours\": [\n                \"11:00-12:30\",\n                \"19:00-21:30\"\n            ]\n        },\n        {\n            \"courier_type\": \"AUTO\",\n            \"regions\": [\n                3,\n                4,\n                19\n            ],\n            \"working_hours\": [\n                \"09:00-11:30\",\n                \"16:00-20:30\"\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"item": [
+						{
+							"name": "Get courier by id 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Courier should have following fields: courier_id, courier_type, regions, working_hours\", function () {",
+											"    const res = pm.response.json();",
+											"",
+											"    pm.expect(res).to.have.property(\"courier_id\").and.to.eql(1);",
+											"    pm.expect(res).to.have.property(\"courier_type\").and.to.eql(\"FOOT\");",
+											"    pm.expect(res).to.have.property(\"regions\").and.to.eql([1, 2 ,3]);",
+											"    pm.expect(res).to.have.property(\"working_hours\").and.to.eql([\"12:00-13:00\", \"18:00-19:00\", \"15:00-16:00\"]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get courier by id 1 throws 400 Bad Request (wrong input)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/foo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"foo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get courier by id 1 throws 404 Not Found (courier #42 does not exist)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 404 Not Found and {}\", function () {",
+											"    pm.response.to.have.status(404);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/42",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"42"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get all",
+					"item": [
+						{
+							"name": "Couriers get (default offset 0 and limit 1)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Get couriers with no params should return offset 0 and limit 1\", function () {",
+											"    const res = pm.response.json();",
+											"    ",
+											"    pm.expect(res.couriers.length).to.equal(1);",
+											"    pm.expect(res.offset).to.equal(0);",
+											"    pm.expect(res.limit).to.equal(1);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers get with offset 0 and limit 4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Get couriers with offset 0 and limit 4\", function () {",
+											"    const res = pm.response.json();",
+											"    const offset = pm.request.url.query.get('offset');",
+											"    const limit = pm.request.url.query.get('limit');",
+											"",
+											"    pm.expect(res.couriers.length).to.equal(+limit);",
+											"    pm.expect(res.offset).to.equal(+offset);",
+											"    pm.expect(res.limit).to.equal(+limit);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers?offset=0&limit=4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "4",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers get with offset 2 and limit 3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Get couriers with offset 2 and limit 3\", function () {",
+											"    const res = pm.response.json();",
+											"    const offset = pm.request.url.query.get('offset');",
+											"    const limit = pm.request.url.query.get('limit');",
+											"",
+											"    pm.expect(res.couriers.length).to.equal(+limit);",
+											"    pm.expect(res.offset).to.equal(+offset);",
+											"    pm.expect(res.limit).to.equal(+limit);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers?offset=2&limit=3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "2",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers get with offset 42 and limit 42 throws 400 Bad Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers?offset=42&limit=42",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "42",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "42",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers get throws 400 Bad Request (wrong format in offset)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers?offset=foo&limit=3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "foo",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers get throws 400 Bad Request (wrong format in limit)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers?offset=0&limit=foo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "foo",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Couriers get with offset 0 and limit 0 throws 400 Bad Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers?offset=0&limit=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "0",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "save",
+					"item": [
+						{
+							"name": "Orders save throws 400 Bad Request (CreateOrderRequest is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (CreateOrderRequest orders is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (CreateOrderRequest orders is empty)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (weight is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (cost is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ]\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (regions field is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (delivery hours field is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"regions\": 1,\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (wrong format in weight)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": \"foo\",\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (wrong format in regions)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"regions\": \"foo\",\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (wrong format in delivery hours)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"foo\"\n            ],\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save throws 400 Bad Request (wrong format in cost)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": \"foo\"\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders save",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"const req = JSON.parse(pm.request.body.raw);",
+											"const res = pm.response.json();",
+											"let id = 0;",
+											"let orderId = 0;",
+											"",
+											"pm.test(\"Size of request and response should be the same\", function () {",
+											"    pm.expect(res.orders.length).to.equal(req.orders.length);",
+											"});",
+											"",
+											"pm.test(\"Every order should have following fields: order_id, weight, regions, cost, delivery_hours, completed_time\", function () {",
+											"    res.orders.forEach(function(order) {",
+											"        pm.expect(order).to.have.property(\"order_id\", ++id);",
+											"        pm.expect(order).to.have.property(\"weight\", req.orders[orderId].weight);",
+											"        pm.expect(order).to.have.property(\"regions\", req.orders[orderId].regions);",
+											"        pm.expect(order).to.have.property(\"cost\", req.orders[orderId].cost);",
+											"        pm.expect(order.delivery_hours.length).to.equal(req.orders[orderId++].delivery_hours.length);",
+											"        pm.expect(order).to.have.property(\"completed_time\", null);",
+											"    })",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orders\": [\n        {\n            \"weight\": 12.2,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 5\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 12,\n            \"delivery_hours\": [\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 3\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 6,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\",\n                \"12:00-13:00\"\n            ],\n            \"cost\": 23\n        },\n        {\n            \"weight\": 5,\n            \"regions\": 9,\n            \"delivery_hours\": [\n                \"18:00-19:00\",\n                \"15:00-16:00\"\n            ],\n            \"cost\": 76\n        },\n        {\n            \"weight\": 16,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"12:00-13:00\"\n            ],\n            \"cost\": 98\n        },\n        {\n            \"weight\": 4,\n            \"regions\": 15,\n            \"delivery_hours\": [\n                \"11:00-13:00\"\n            ],\n            \"cost\": 56\n        },\n        {\n            \"weight\": 3,\n            \"regions\": 1,\n            \"delivery_hours\": [\n                \"14:00-16:00\"\n            ],\n            \"cost\": 14\n        },\n        {\n            \"weight\": 7,\n            \"regions\": 8,\n            \"delivery_hours\": [\n                \"12:00-14:00\"\n            ],\n            \"cost\": 18\n        },\n        {\n            \"weight\": 21,\n            \"regions\": 13,\n            \"delivery_hours\": [\n                \"09:00-11:00\"\n            ],\n            \"cost\": 11\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "complete",
+					"item": [
+						{
+							"name": "Get courier id 1 meta-info throws 404 Not Found (before orders complete)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 404 Not Found and {}\", function () {",
+											"    pm.response.to.have.status(404);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/meta-info/1?startDate=2023-04-22&endDate=2023-04-23",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"meta-info",
+										"1"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2023-04-22"
+										},
+										{
+											"key": "endDate",
+											"value": "2023-04-23"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (CompleteOrderRequest is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (CompleteOrderRequest complete info is null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (CompleteOrderRequest is empty)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (courier id cannot be null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"order_id\": 1,\n            \"complete_time\": \"2023-04-22T10:13:56.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (order id cannot be null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 1,\n            \"complete_time\": \"2023-04-22T10:13:56.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (complete time cannot be null)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 1,\n            \"order_id\": 1\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (courier does not exist)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 777,\n            \"order_id\": 1,\n            \"complete_time\": \"2023-04-22T10:13:56.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (order does not exist)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 1,\n            \"order_id\": 777,\n            \"complete_time\": \"2023-04-22T10:13:56.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (wrong format in courier_id)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": \"foo\",\n            \"order_id\": 1,\n            \"complete_time\": \"2023-04-22T10:13:56.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (wrong format in order_id)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 1,\n            \"order_id\": \"foo\",\n            \"complete_time\": \"2023-04-22T10:13:56.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete throws 400 Bad Request (wrong format in complete_time)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 1,\n            \"order_id\": 1,\n            \"complete_time\": \"foo\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders complete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"const req = JSON.parse(pm.request.body.raw);",
+											"const res = pm.response.json();",
+											"let id = 0;",
+											"let orderId = 0;",
+											"",
+											"pm.test(\"Size of request and response should be the same\", function () {",
+											"    pm.expect(res.length).to.eql(req.complete_info.length);",
+											"});",
+											"",
+											"pm.test(\"Every order should have following fields: order_id, completed_time\", function () {",
+											"    res.forEach(function(order) {",
+											"        pm.expect(order).to.have.property(\"order_id\", ++id);",
+											"        pm.expect(order).to.have.property(\"completed_time\", req.complete_info[orderId++].complete_time);",
+											"    })",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"complete_info\": [\n        {\n            \"courier_id\": 1,\n            \"order_id\": 1,\n            \"complete_time\": \"2023-04-22T10:13:00.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 2,\n            \"complete_time\": \"2023-04-22T10:13:05.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 3,\n            \"complete_time\": \"2023-04-22T10:13:10.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 4,\n            \"complete_time\": \"2023-04-22T10:13:15.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 5,\n            \"complete_time\": \"2023-04-22T10:13:20.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 6,\n            \"complete_time\": \"2023-04-22T10:13:25.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 7,\n            \"complete_time\": \"2023-04-22T10:13:30.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 8,\n            \"complete_time\": \"2023-04-22T10:13:35.876Z\"\n        },\n        {\n            \"courier_id\": 1,\n            \"order_id\": 9,\n            \"complete_time\": \"2023-04-22T10:13:40.876Z\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/complete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"item": [
+						{
+							"name": "Get order by id 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Order should have following fields: order_id, regions, weight, cost, delivery_hours, completed_time\", function () {",
+											"    const res = pm.response.json();",
+											"",
+											"    pm.expect(res).to.have.property(\"order_id\").and.to.eql(1);",
+											"    pm.expect(res).to.have.property(\"regions\").and.to.eql(1);",
+											"    pm.expect(res).to.have.property(\"cost\").and.to.eql(5);",
+											"    pm.expect(res).to.have.property(\"weight\").and.to.eql(12.2);",
+											"    pm.expect(res).to.have.property(\"delivery_hours\").and.to.eql([\"12:00-13:00\", \"18:00-19:00\", \"15:00-16:00\"]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get order by id 1 throws 400 Bad Request (wrong input)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/foo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"foo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get order by id 1 throws 404 Not Found (order #42 does not exist)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 404 Not Found and {}\", function () {",
+											"    pm.response.to.have.status(404);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/42",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"42"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get all",
+					"item": [
+						{
+							"name": "Orders get (default offset 0 and limit 1)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 and body in JSON\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders get with offset 0 and limit 4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Get orders with offset 0 and limit 4\", function () {",
+											"    const res = pm.response.json();",
+											"    const offset = pm.request.url.query.get('offset');",
+											"    const limit = pm.request.url.query.get('limit');",
+											"",
+											"    pm.expect(res.orders.length).to.equal(+limit);",
+											"    pm.expect(res.offset).to.equal(+offset);",
+											"    pm.expect(res.limit).to.equal(+limit);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=0&limit=4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Количество заказов, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "4",
+											"description": "Максимальное количество заказов в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders get with offset 2 and limit 3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Get orders with offset 2 and limit 3\", function () {",
+											"    const res = pm.response.json();",
+											"    const offset = pm.request.url.query.get('offset');",
+											"    const limit = pm.request.url.query.get('limit');",
+											"",
+											"    pm.expect(res.orders.length).to.equal(+limit);",
+											"    pm.expect(res.offset).to.equal(+offset);",
+											"    pm.expect(res.limit).to.equal(+limit);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=2&limit=3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "2",
+											"description": "Количество заказов, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"description": "Максимальное количество заказов в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders get with offset 42 and limit 42 throws 400 Bad Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=42&limit=42",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "42",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "42",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders get throws 400 Bad Request (wrong format in offset)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=foo&limit=3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "foo",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders get throws 400 Bad Request (wrong format in limit)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=0&limit=foo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "foo",
+											"description": "Максимальное количество курьеров в выдаче. Если параметр не передан, то значение по умолчанию равно 1."
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders get with offset 0 and limit 0 throws 400 Bad Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=0&limit=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Количество курьеров, которое нужно пропустить для отображения текущей страницы. Если параметр не передан, то значение по умолчанию равно 0."
+										},
+										{
+											"key": "limit",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "meta-info",
+					"item": [
+						{
+							"name": "Get courier id 1 meta-info",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 200 OK and JSON body\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Courier meta-info should have following fields: courier_id, regions, earnings, rating, courier_type, working_hours\", function () {",
+											"    const res = pm.response.json();",
+											"",
+											"    pm.expect(res).to.have.property(\"courier_id\").and.to.eql(1);",
+											"    pm.expect(res).to.have.property(\"earnings\").and.to.eql(608);",
+											"    pm.expect(res).to.have.property(\"rating\").and.to.eql(1);",
+											"    pm.expect(res).to.have.property(\"regions\").and.to.eql([1, 2, 3]);",
+											"    pm.expect(res).to.have.property(\"courier_type\").and.to.eql(\"FOOT\");",
+											"    pm.expect(res).to.have.property(\"working_hours\").and.to.eql([\"12:00-13:00\", \"18:00-19:00\", \"15:00-16:00\"]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/meta-info/1?startDate=2023-04-22&endDate=2023-04-23",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"meta-info",
+										"1"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2023-04-22"
+										},
+										{
+											"key": "endDate",
+											"value": "2023-04-23"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get courier id 1 meta-info throws 400 Bad Request (wrong start date input)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/meta-info/1?startDate=foo&endDate=2023-04-23",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"meta-info",
+										"1"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "foo"
+										},
+										{
+											"key": "endDate",
+											"value": "2023-04-23"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get courier id 1 meta-info throws 400 Bad Request (wrong end date input)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response 400 Bad Request and {}\", function () {",
+											"    pm.response.to.have.status(400);",
+											"    pm.expect(pm.response.json()).to.eql({});",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/couriers/meta-info/1?startDate=2023-04-22&endDate=end",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"couriers",
+										"meta-info",
+										"1"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "2023-04-22"
+										},
+										{
+											"key": "endDate",
+											"value": "end"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

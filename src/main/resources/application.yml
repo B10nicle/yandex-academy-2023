@@ -1,0 +1,27 @@
+server:
+  port: 8080
+---
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_SERVER}:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    open-in-view: 'false'
+    properties:
+      hibernate:
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create
+  sql:
+    init:
+      mode: always
+---
+rate-limiter:
+  couriers:
+    endpoints: 4
+    rps: 10
+  orders:
+    endpoints: 4
+    rps: 10

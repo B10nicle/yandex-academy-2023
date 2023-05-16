@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  application:
+    build: .
+    restart: always
+    environment:
+      POSTGRES_DSN: postgresql://postgres:password@db/postgres
+      POSTGRES_SERVER: db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    networks:
+      - enrollment
+
+  db:
+    image: postgres:15.2-alpine
+    environment:
+      - POSTGRES_PASSWORD=password
+    expose:
+      - "5432"
+    restart: always
+    networks:
+      - enrollment
+
+networks:
+  enrollment:
+    driver: bridge
