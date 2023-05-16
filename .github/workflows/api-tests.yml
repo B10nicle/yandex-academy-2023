@@ -37,6 +37,9 @@ jobs:
           bash .github/workflows/wait-for-it.sh -t 60 localhost:8080
           bash .github/workflows/wait-for-it.sh -t 60 localhost:5432
 
+      - name: Print application logs
+        run: docker-compose logs application
+
       - name: Run Postman tests
         run: |
           newman run ./postman/Yandex_Lavka.postman_collection.json \
