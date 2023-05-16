@@ -35,6 +35,11 @@ jobs:
       - name: Run application
         run:
           docker-compose up -d
+          chmod a+x .github/workflows/wait-for-it.sh
+          .github/workflows/wait-for-it.sh -t 60 localhost:8080
+          .github/workflows/wait-for-it.sh -t 60 localhost:9090
+          docker-compose ps
+          docker-compose logs
 
       - name: Run POSTMAN tests
         run: >
