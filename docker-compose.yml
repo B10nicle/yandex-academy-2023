@@ -13,7 +13,7 @@ services:
     depends_on:
       - db
     ports:
-      - "8090:8090"
+      - "8080:8080"
     networks:
       - enrollment
 
