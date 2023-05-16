@@ -41,7 +41,7 @@ jobs:
 
       - name: Run Postman tests
         run: |
-          newman run ./postman/Yandex_Lavka.postman_collection.json \
+          newman run https://api.postman.com/collections/22427952-d6561342-a7c3-4787-a05f-7a3beb07574c?access_key=PMAT-01GYHJ9N7QK24CZKJHPVGSSDNT \
           --delay-request 50 -r cli,htmlextra \
           --verbose --color on --reporter-htmlextra-darkTheme \
           --reporter-htmlextra-export reports/ewm_main_report.html \
