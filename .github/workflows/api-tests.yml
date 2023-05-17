@@ -35,6 +35,9 @@ jobs:
           docker compose up -d
           docker container list
           sleep 30
+          
+          docker port yandex-academy-2023-application-1
+          
           docker container list
           docker logs yandex-academy-2023-application-1
           docker logs yandex-academy-2023-db-1
