@@ -39,7 +39,10 @@ jobs:
       - name: Find Network
         run: networkctl list
 
-      - name: Find Network
+      - name: plntu
+        run: netstat -plntu
+
+      - name: networkctl status eth0
         run: networkctl status eth0
 
       - name: Run Postman tests
