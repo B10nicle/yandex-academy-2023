@@ -1,3 +1,5 @@
+[![Yandex Academy Tests](https://github.com/B10nicle/yandex-academy-2023/actions/workflows/api-tests.yml/badge.svg?branch=main)](https://github.com/B10nicle/yandex-academy-2023/actions/workflows/api-tests.yml)
+
 # ШБР Лето 2023. Вступительное задание
 
 Вы устроились в Яндекс, и вам нужно запустить сервис Яндекс Лавка.
