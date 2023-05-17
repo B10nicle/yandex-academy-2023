@@ -44,6 +44,7 @@ jobs:
       - name: iptables -nvL
         run: sudo iptables -nvL
 
+
       - name: Find localhost
         run: nslookup localhost
 
