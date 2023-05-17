@@ -34,6 +34,7 @@ jobs:
         run: |
           docker-compose up -d
           docker container list
+          docker logs yandex-academy-2023_application_1
           chmod +x .github/workflows/wait-for-it.sh
           .github/workflows/wait-for-it.sh -t 60 http://127.0.0.1:80
 
