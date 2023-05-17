@@ -36,6 +36,9 @@ jobs:
       - name: Find localhost
         run: nslookup localhost
 
+      - name: Find Network
+        run: networkctl list
+
       - name: Run Postman tests
         run: |
           newman run ./postman/Yandex_Lavka.postman_collection.json \
