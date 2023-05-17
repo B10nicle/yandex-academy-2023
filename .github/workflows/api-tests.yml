@@ -31,10 +31,10 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: iptables -nvL
-        run: iptables -nvL
+        run: sudo iptables -nvL
 
       - name: iptables -L
-        run: iptables -L
+        run: sudo iptables -L
 
       - name: Run application
         run: docker-compose up -d
