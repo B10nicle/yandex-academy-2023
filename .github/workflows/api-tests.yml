@@ -36,9 +36,6 @@ jobs:
       - name: iptables -nvL
         run: sudo iptables -nvL
 
-      - name: iptables -L
-        run: sudo iptables -L
-
       - name: Run application
         run: docker-compose up -d
 
