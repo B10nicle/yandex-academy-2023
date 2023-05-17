@@ -33,6 +33,7 @@ jobs:
       - name: Run application
         run: |
           docker-compose up -d
+          docker container list
           chmod +x .github/workflows/wait-for-it.sh
           .github/workflows/wait-for-it.sh -t 60 http://127.0.0.1:80
 
