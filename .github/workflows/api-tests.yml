@@ -28,7 +28,7 @@ jobs:
         run: |
           docker compose up -d
           sleep 30 
-          ping -c 3 http://127.0.0.1:80
+          ping -c 3 127.0.0.1
           curl -X GET http://127.0.0.1:80
 
       - name: iptables -nvL
