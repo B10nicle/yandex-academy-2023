@@ -31,8 +31,10 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: Run application
-        run: |
-          docker-compose up -d
+        run: docker-compose up -d
+
+      - name: Find localhost
+        run: nslookup localhost
 
       - name: Run Postman tests
         run: |
