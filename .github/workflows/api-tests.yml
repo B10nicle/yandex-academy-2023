@@ -30,9 +30,6 @@ jobs:
       - name: Install Newman
         run: npm install -g newman newman-reporter-htmlextra
 
-      - name: Install Curl
-        run: apt install curl
-
       - name: Curl get
         run: curl 127.0.0.1:8080
 
