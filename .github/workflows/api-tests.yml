@@ -36,8 +36,10 @@ jobs:
           docker container list
           sleep 30
           docker container list
+          docker logs yandex-academy-2023-application-1
+          docker logs yandex-academy-2023-db-1
           chmod +x .github/workflows/wait-for-it.sh
-          .github/workflows/wait-for-it.sh -t 60 http://127.0.0.1:80
+          .github/workflows/wait-for-it.sh -t 20 http://127.0.0.1:80
 
       - name: Curl get
         run: curl -X GET http://127.0.0.1:80
