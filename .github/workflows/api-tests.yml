@@ -30,14 +30,17 @@ jobs:
       - name: Install Newman
         run: npm install -g newman newman-reporter-htmlextra
 
+      - name: Run application
+        run: |
+          docker-compose up -d
+          chmod +x .github/workflows/wait-for-it.sh
+          .github/workflows/wait-for-it.sh -t 60 http://127.0.0.1:80
+
       - name: Curl get
         run: curl -X GET http://127.0.0.1:80
 
       - name: iptables -nvL
         run: sudo iptables -nvL
-
-      - name: Run application
-        run: docker-compose up -d
 
       - name: Find localhost
         run: nslookup localhost
