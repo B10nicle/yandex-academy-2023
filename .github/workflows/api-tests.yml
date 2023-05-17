@@ -30,6 +30,12 @@ jobs:
       - name: Install Newman
         run: npm install -g newman newman-reporter-htmlextra
 
+      - name: Install Curl
+        run: apt install curl
+
+      - name: Curl get
+        run: curl 127.0.0.1:8080
+
       - name: Run application
         run: docker-compose up -d
 
@@ -38,6 +44,9 @@ jobs:
 
       - name: Find Network
         run: networkctl list
+
+      - name: plntu
+        run: netstat -plntu
 
       - name: plntu
         run: netstat -plntu
