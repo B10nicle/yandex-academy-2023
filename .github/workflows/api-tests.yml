@@ -32,7 +32,7 @@ jobs:
 
       - name: Run application
         run: |
-          docker-compose up -d
+          docker image list
           docker container list
           docker logs yandex-academy-2023_application_1
           chmod +x .github/workflows/wait-for-it.sh
