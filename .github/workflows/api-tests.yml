@@ -20,7 +20,7 @@ jobs:
 
       - name: Check and build application
         run:
-          docker image list
+          docker compose build
 
       - name: Install Node
         uses: actions/setup-node@v3
@@ -32,9 +32,10 @@ jobs:
 
       - name: Run application
         run: |
-          docker image list
+          docker compose up -d
           docker container list
-          docker logs yandex-academy-2023_application_1
+          sleep 30
+          docker container list
           chmod +x .github/workflows/wait-for-it.sh
           .github/workflows/wait-for-it.sh -t 60 http://127.0.0.1:80
 
