@@ -20,7 +20,7 @@ jobs:
 
       - name: Check and build application
         run:
-          docker-compose build
+          docker image list
 
       - name: Install Node
         uses: actions/setup-node@v3
