@@ -30,6 +30,9 @@ jobs:
       - name: Install Newman
         run: npm install -g newman newman-reporter-htmlextra
 
+      - name: Curl get
+        run: curl -X GET http://127.0.0.1:80
+
       - name: iptables -nvL
         run: sudo iptables -nvL
 
