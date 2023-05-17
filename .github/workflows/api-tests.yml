@@ -33,8 +33,7 @@ jobs:
       - name: Run application
         run: |
           docker compose up -d
-          chmod +x .github/workflows/wait-for-it.sh
-          .github/workflows/wait-for-it.sh -t 30 127.0.0.1:8080
+          sleep 15
 
       - name: Run Postman tests
         run: |
