@@ -33,7 +33,6 @@ jobs:
       - name: Run application
         run: |
           docker compose up -d
-          sleep 30 
 
       - name: Run Postman tests
         run: |
