@@ -16,6 +16,8 @@ services:
       - "127.0.0.1:80:8080"
     networks:
       - enrollment
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   db:
     image: postgres:15.2-alpine
