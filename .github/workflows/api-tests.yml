@@ -39,6 +39,9 @@ jobs:
       - name: Find Network
         run: networkctl list
 
+      - name: Find Network
+        run: networkctl status eth0
+
       - name: Run Postman tests
         run: |
           newman run ./postman/Yandex_Lavka.postman_collection.json \
